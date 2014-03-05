@@ -47,6 +47,11 @@ def poll_for_lists():
     lists = [l for l in results]
     return render_template("todo_list_partial.html", lists=lists)
 
+@app.route('/todo_lists/<int:list_id>/todo_item/<int:item_id>/done', methods=["POST"])
+def mark_as_complete():
+
+    return render_template("todo_items_partial.html", items=items)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

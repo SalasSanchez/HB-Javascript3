@@ -38,4 +38,11 @@ $(document).ready(function(){
             alert('Fail!!!');
         });
     });
+
+    var checkedBox = $("#item{{item.id}}");
+    checkedBox.change(function(event){
+        if (checkedBox.is(":checked")) {
+
+        }
+    });
 });
