@@ -17,7 +17,7 @@
                     <div class="todo-list">
                         <input name="item" value="{{item.id}}" type="checkbox" class="todocheckboxes" {% if item.done %}checked{% endif %}></input>
 
-                        <label for="item">{{item.task}}</label>
+                        <label id="task" for="item">{{item.task}}</label>
                     </div>
                 {% endfor %}
 

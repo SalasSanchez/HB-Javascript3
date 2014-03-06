@@ -24,11 +24,11 @@ $(document).ready(function(){
         event.preventDefault(); //prevent the browser form submissions from happening
         
         $.ajax({
-            url: document.url,
+            url: location.href,
             method: "POST",
             data: $("form#todo-item-form").serialize(),
         }).done(function(data){
-             var list = $("#todo-list")[0];
+            var list = $("#todo-list")[0];
             // var list = document.getElementById('todo-list'); 
             list.innerHTML = data;
             console.log(data);
@@ -39,10 +39,35 @@ $(document).ready(function(){
         });
     });
 
-    var checkedBox = $("#item{{item.id}}");
-    checkedBox.change(function(event){
-        if (checkedBox.is(":checked")) {
+    var checkedBoxes = $(".todocheckboxes");
+    checkedBoxes.on('click', function(event){
+        event.preventDefault();
 
-        }
+        $.ajax({
+            url: location.href+'/todo_item/'+ this.value +'/done',
+            method: "POST",
+            data: this.value
+            //$(checkedBoxes.value)
+        }).done(function(data){
+            //console.log("You clicked on " + data + " and checked is: " + data.checked);
+            console.log(data);
+
+            // console.log(data);
+
+        }).fail(function(data){
+            alert('Fail!!!');
+        });
+        
+            // $("label#task").serialize() <label id="task" for="item">{{item.task}}</label>
+
+        
+
+
+
     });
+
+
+
+
+
 });
